@@ -23,7 +23,10 @@ export default function Register() {
         setSuccess("User registred successfully");
         setError("");
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setError(err.message);
+        setSuccess("");
+      });
   };
   return (
     <Layout>
