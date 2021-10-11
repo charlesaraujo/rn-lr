@@ -1,13 +1,16 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import tw from "twrnc";
 import Title from "../components/Title";
 import Form from "../components/Form";
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Title text="Login" />
-      <Form />
+      <View style={tw`w-3/4`}>
+        <Title text="Login" />
+        <Form />
+      </View>
     </View>
   );
 }
@@ -15,6 +18,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
