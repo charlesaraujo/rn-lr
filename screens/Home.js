@@ -1,26 +1,20 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import tw from "twrnc";
 import Title from "../components/Title";
 import Form from "../components/Form";
+import Layout from "./Layout";
 
 export default function Home() {
+  const login = (email, password) => {
+    alert(email);
+  };
   return (
-    <View style={styles.container}>
+    <Layout>
       <View style={tw`w-3/4`}>
         <Title text="Login" />
-        <Form />
+        <Form signup={false} onSubmit={login} />
       </View>
-    </View>
+    </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

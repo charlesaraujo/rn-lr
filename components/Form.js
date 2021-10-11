@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import FormLabel from "./FormLabel";
 import FormInput from "./FormInput";
@@ -9,7 +10,9 @@ const FormInputGroup = ({ children }) => {
   return <View style={tw`my-3`}>{children}</View>;
 };
 
-export default function Form() {
+export default function Form({ signup, onSubmit }) {
+  const navigation = useNavigation(),
+    screen = signup ? "Home" : "Register";
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState("");
 
@@ -25,16 +28,21 @@ export default function Form() {
         <FormInput
           onChangeText={(text) => setPassword(text)}
           value={password}
+          secureTextEntry={true}
         />
       </FormInputGroup>
       <FormButton
         primary={true}
-        text="Login"
+        text={!signup ? "Login" : "Register"}
         onPress={() => {
-          alert(email);
+          onSubmit(email, password);
         }}
       />
-      <FormButton primary={false} text="Register" />
+      <FormButton
+        primary={false}
+        onPress={() => navigation.navigate(screen)}
+        text={signup ? "Login" : "Register"}
+      />
     </View>
   );
 }

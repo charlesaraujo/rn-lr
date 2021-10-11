@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import firebase from "firebase";
 import Home from "./screens/Home";
 import { config } from "./firebaseconfig";
+import Register from "./screens/Register";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
